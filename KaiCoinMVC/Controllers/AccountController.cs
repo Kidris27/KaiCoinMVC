@@ -9,19 +9,19 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace KaiCoinMVC.Controllers
 {
-    //public class AccountController : Controller
-    //{
-    //    private readonly BankDbContext _context;
-    //
-    //    public AccountController(BankDbContext context)
-    //    {
-    //        _context = context;
-    //    }
-    //
-    //    // GET: /<controller>/
-    //    public IActionResult AddAccountView()
-    //    {
-    //        return View();
-    //    }
-    //}
+    public class AccountController : Controller
+    {
+        private readonly BankDbContext _context;
+    
+        public AccountController(BankDbContext context)
+        {
+            _context = context;
+        }
+    
+        // GET: /<controller>/
+        public IActionResult AddAccountView()
+        {
+            return View();
+        }
+    }
 }
