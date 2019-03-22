@@ -1,16 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using KaiCoinMVC.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace KaiCoinMVC.Data
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class BankDbContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        public BankDbContext(DbContextOptions<BankDbContext> options)
             : base(options)
         {
         }
+
+        public DbSet<Account> Account { get; set; }
+
     }
 }

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using KaiCoinMVC.Models;
+using KaiCoinMVC.Data;
 
 namespace KaiCoinMVC.Controllers
 {
@@ -38,6 +39,19 @@ namespace KaiCoinMVC.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        private readonly BankDbContext _context;
+
+        public HomeController(BankDbContext context)
+        {
+            _context = context;
+        }
+
+        // GET: /<controller>/
+        public IActionResult AddAccount()
+        {
+            return View();
         }
     }
 }
