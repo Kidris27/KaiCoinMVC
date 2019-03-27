@@ -41,17 +41,17 @@ namespace KaiCoinMVC.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        private readonly BankDbContext _context;
-
-        public HomeController(BankDbContext context)
-        {
-            _context = context;
-        }
-
-        // GET: /<controller>/
-        public IActionResult AddAccount()
-        {
-            return View();
-        }
+        //private readonly BankDbContext _context;
+        //
+        //public HomeController(BankDbContext context)
+        //{
+        //    _context = context;
+        //}
+        //
+        //// GET: /<controller>/
+        //public IActionResult AddAccount()
+        //{
+        //    return View();
+        //}
     }
 }
