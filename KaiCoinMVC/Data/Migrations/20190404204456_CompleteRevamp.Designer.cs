@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KaiCoinMVC.Data.Migrations
 {
     [DbContext(typeof(BankDbContext))]
-    [Migration("20190327203312_ChangedToOpeningDate")]
-    partial class ChangedToOpeningDate
+    [Migration("20190404204456_CompleteRevamp")]
+    partial class CompleteRevamp
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,7 +23,9 @@ namespace KaiCoinMVC.Data.Migrations
 
             modelBuilder.Entity("KaiCoinMVC.Models.Account", b =>
                 {
-                    b.Property<decimal>("AccountNumber");
+                    b.Property<int>("AccountNumber")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Address");
 
@@ -35,17 +37,34 @@ namespace KaiCoinMVC.Data.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<string>("OpeningDate");
+                    b.Property<DateTime>("OpeningDate");
 
                     b.Property<string>("PhoneNo");
 
                     b.Property<string>("State");
 
-                    b.Property<decimal?>("ZipCode");
+                    b.Property<string>("ZipCode");
 
                     b.HasKey("AccountNumber");
 
                     b.ToTable("Account");
+                });
+
+            modelBuilder.Entity("KaiCoinMVC.Models.Transaction", b =>
+                {
+                    b.Property<int>("AccountNumber")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal?>("Amount");
+
+                    b.Property<DateTime>("TransactionDate");
+
+                    b.Property<int>("TransactionType");
+
+                    b.HasKey("AccountNumber");
+
+                    b.ToTable("Transaction");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

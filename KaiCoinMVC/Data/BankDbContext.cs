@@ -17,5 +17,7 @@ namespace KaiCoinMVC.Data
 
         public DbSet<Account> Account { get; set; }
 
+        public DbSet<Transaction> Transaction { get; set; }
+
     }
 }
